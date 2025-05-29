@@ -12,7 +12,7 @@ const SideBar = () => {
   const currentPath = location.pathname;
 
   return (
-    <header className="group w-[80px] h-screen flex border-r border-gray-800 hover:w-[250px] transition-all duration-300 p-5 overflow-hidden">
+    <header className="group w-[80px] absolute top-0 left-0 h-screen flex backdrop-blur-[5px] border-r border-gray-800 hover:w-[250px] transition-all duration-300 p-5 overflow-hidden z-50">
       <div className="w-full h-full flex flex-col items-start justify-between">
         <div className="flex gap-2 items-center">
           <BiSolidWallet className="h-9 text-[#8FADCC]" size={28} />
@@ -20,11 +20,13 @@ const SideBar = () => {
             MyWallet
           </p>
         </div>
-        <div className="flex flex-col justify-center gap-5 w-[200px]">
+        <div className="flex flex-col justify-center gap-2 w-[200px]">
           <div>
             <button
-              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] hover:text-[#dceeff] ${
-                currentPath === "/" && "bg-[#223649] font-[500]"
+              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] transition-all duration-200 ${
+                currentPath === "/"
+                  ? "bg-[#223649] font-[500]"
+                  : "hover:bg-[#2236497e] text-[#CDCDCD]"
               }`}
               onClick={() => navigate("/")}
             >
@@ -34,8 +36,10 @@ const SideBar = () => {
           </div>
           <div>
             <button
-              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] hover:text-[#dceeff] ${
-                currentPath === "/transacoes" && "bg-[#223649] font-[500]"
+              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] transition-all duration-200 ${
+                currentPath === "/transacoes"
+                  ? "bg-[#223649] font-[500]"
+                  : "hover:bg-[#2236497e]"
               }`}
               onClick={() => navigate("/transacoes")}
             >
@@ -45,8 +49,10 @@ const SideBar = () => {
           </div>
           <div>
             <button
-              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] hover:text-[#dceeff] ${
-                currentPath === "/metas" && "bg-[#223649] font-[500]"
+              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] transition-all duration-200 ${
+                currentPath === "/metas"
+                  ? "bg-[#223649] font-[500]"
+                  : "hover:bg-[#2236497e]"
               }`}
               onClick={() => navigate("/metas")}
             >
@@ -56,8 +62,10 @@ const SideBar = () => {
           </div>
           <div>
             <button
-              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] hover:text-[#dceeff] ${
-                currentPath === "/relatorios" && "bg-[#223649] font-[500]"
+              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] transition-all duration-200 ${
+                currentPath === "/relatorios"
+                  ? "bg-[#223649] font-[500]"
+                  : "hover:bg-[#2236497e]"
               }`}
               onClick={() => navigate("/relatorios")}
             >
