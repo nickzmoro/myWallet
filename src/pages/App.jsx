@@ -1,9 +1,15 @@
+import BalanceChart from "../components/balanceGraphic";
 import BalanceOverview from "../components/balanceOverview";
+import Category from "../components/category";
 import SideBar from "../components/sideBar";
 import { BsBank2 } from "react-icons/bs";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
+import { ImSpoonKnife } from "react-icons/im";
 
 function App() {
+  const income = 3000;
+  const expenses = 1500;
+
   return (
     <div className="flex gap-3">
       <SideBar />
@@ -35,6 +41,52 @@ function App() {
             icon={<FaArrowDown className="text-[#DA5733]" />}
             balanceColor={"text-[#DA5733]"}
           />
+        </div>
+        <div className="flex justify-between gap-8">
+          <div className="min-w-[1000px] mt-10 border border-[#304D69] rounded-[8px] p-5">
+            <h4 className="text-[1.1rem] text-[#8FADCC] font-[500]">
+              Entradas vs. Saídas
+            </h4>
+            <p className="text-[0.9rem] mb-5 text-[#979797]">
+              Comparativo mensal
+            </p>
+            <BalanceChart income={income} expenses={expenses} />
+          </div>
+          <div className="w-full mt-10 border border-[#304D69] rounded-[8px] p-5">
+            <h4 className="text-[1.1rem] text-[#8FADCC] font-[500]">
+              Categorias mais utilizadas
+            </h4>
+            <div className="mt-5 flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <Category
+                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  type={"Alimentação"}
+                  amount={300}
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <Category
+                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  type={"Transporte"}
+                  amount={300}
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <Category
+                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  type={"Lazer"}
+                  amount={300}
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <Category
+                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  type={"Moradia"}
+                  amount={300}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
