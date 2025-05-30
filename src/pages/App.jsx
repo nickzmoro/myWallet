@@ -5,6 +5,9 @@ import SideBar from "../components/sideBar";
 import { BsBank2 } from "react-icons/bs";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 import { ImSpoonKnife } from "react-icons/im";
+import { FaBus } from "react-icons/fa";
+import { IoGameController } from "react-icons/io5";
+import { GiFamilyHouse } from "react-icons/gi";
 
 function App() {
   const income = 3000;
@@ -66,21 +69,23 @@ function App() {
               </div>
               <div className="flex items-center justify-between">
                 <Category
-                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  icon={<FaBus size={20} className="text-[#1667E2]" />}
                   type={"Transporte"}
                   amount={300}
                 />
               </div>
               <div className="flex items-center justify-between">
                 <Category
-                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  icon={
+                    <IoGameController size={20} className="text-[#A816E2]" />
+                  }
                   type={"Lazer"}
                   amount={300}
                 />
               </div>
               <div className="flex items-center justify-between">
                 <Category
-                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
+                  icon={<GiFamilyHouse size={20} className="text-[#E2169E]" />}
                   type={"Moradia"}
                   amount={300}
                 />
