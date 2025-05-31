@@ -2,6 +2,7 @@ import BalanceChart from "../components/balanceGraphic";
 import BalanceOverview from "../components/balanceOverview";
 import Category from "../components/category";
 import SideBar from "../components/sideBar";
+import Title from "../components/title";
 import { BsBank2 } from "react-icons/bs";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 import { ImSpoonKnife } from "react-icons/im";
@@ -16,13 +17,11 @@ function App() {
   return (
     <div className="flex gap-3">
       <SideBar />
-      <section className="pl-[150px] pt-5 w-full pr-[50px]">
-        <div>
-          <h3 className="text-[1.5rem] font-[600]">Visão geral</h3>
-          <p className="text-[#8FADCC] mt-1">
-            Seu resumo financeiro atualizado.
-          </p>
-        </div>
+      <section className="pl-[125px] pt-5 w-full pr-[50px]">
+        <Title
+          title="Visão geral"
+          subtitle="Seu resumo financeiro atualizado."
+        />
         <div className="mt-8 flex justify-between gap-8">
           <BalanceOverview
             title={"Saldo Atual"}
