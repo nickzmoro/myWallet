@@ -26,7 +26,7 @@ const SideBar = () => {
               className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] transition-all duration-200 ${
                 currentPath === "/"
                   ? "bg-[#223649] font-[500]"
-                  : "hover:bg-[#2236497e] text-[#CDCDCD]"
+                  : "hover:bg-[#2236497e]"
               }`}
               onClick={() => navigate("/")}
             >

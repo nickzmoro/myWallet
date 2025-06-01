@@ -4,9 +4,6 @@ import SideBar from "../components/sideBar";
 import Title from "../components/title";
 import { IoClose } from "react-icons/io5";
 import FormGoal from "../components/forms/formGoal";
-import { FaCheck } from "react-icons/fa6";
-import { FaTrashAlt } from "react-icons/fa";
-import { GrPowerReset } from "react-icons/gr";
 import GoalsCard from "../components/cards/goalsCard";
 
 const getEntriesFromStorage = () => {
