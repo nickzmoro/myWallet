@@ -39,7 +39,7 @@ const Transactions = () => {
               </button>
             </div>
             <div className="mt-3">
-              <FormTransaction />
+              <FormTransaction closeModal={setShowModal} />
             </div>
           </div>
         </div>
