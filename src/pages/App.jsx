@@ -9,8 +9,12 @@ import { ImSpoonKnife } from "react-icons/im";
 import { FaBus } from "react-icons/fa";
 import { IoGameController } from "react-icons/io5";
 import { GiFamilyHouse } from "react-icons/gi";
+import { useTransaction } from "../contexts/TransactionLedgerContext";
+import TransactionHistory from "../components/transactionHistoryTable";
 
 function App() {
+  const { savedTransactions } = useTransaction();
+
   const income = 3000;
   const expenses = 1500;
 
@@ -91,6 +95,18 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="mt-10 mb-8 border border-[#304D69] rounded-[8px] p-5">
+          <div>
+            <h4 className="text-[1.25rem]">Transações recentes</h4>
+          </div>
+          {savedTransactions.length > 0 ? (
+            <TransactionHistory savedTransactions={savedTransactions} />
+          ) : (
+            <p className="mt-3 text-[#ffffffc0] px-5">
+              Nenhuma transação foi registrada até o momento..
+            </p>
+          )}
         </div>
       </section>
     </div>

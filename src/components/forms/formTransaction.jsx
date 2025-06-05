@@ -3,12 +3,8 @@ import Select from "../select";
 import { useTransaction } from "../../contexts/TransactionLedgerContext";
 
 const FormTransaction = ({ closeModal }) => {
-  const {
-    transactions,
-    handleChange,
-    handleSaveTransaction,
-    savedTransactions,
-  } = useTransaction();
+  const { transactions, handleChange, handleSaveTransaction } =
+    useTransaction();
 
   return (
     <form className="flex flex-col gap-3">
