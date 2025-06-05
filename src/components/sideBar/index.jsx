@@ -12,7 +12,7 @@ const SideBar = () => {
   const currentPath = location.pathname;
 
   return (
-    <header className="group w-[80px] absolute top-0 left-0 h-screen flex backdrop-blur-[5px] border-r border-gray-800 hover:w-[250px] transition-all duration-300 p-5 overflow-hidden z-50">
+    <header className="group w-[80px] fixed top-0 left-0 h-screen flex backdrop-blur-[5px] border-r border-gray-800 hover:w-[250px] transition-all duration-300 p-5 overflow-hidden z-50">
       <div className="w-full h-full flex flex-col items-start justify-between">
         <div className="flex gap-2 items-center">
           <BiSolidWallet className="h-9 text-[#8FADCC]" size={28} />
