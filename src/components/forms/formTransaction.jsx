@@ -62,6 +62,8 @@ const FormTransaction = ({ closeModal }) => {
           id="category"
           options={[
             { type: "Selecione a categoria" },
+            { type: "Salário" },
+            { type: "Receitas" },
             { type: "Alimentação" },
             { type: "Transporte" },
             { type: "Moradia" },
@@ -70,7 +72,7 @@ const FormTransaction = ({ closeModal }) => {
             { type: "Lazer" },
             { type: "Contas" },
             { type: "Assinaturas" },
-            { type: "Emergências" },
+            { type: "Outros.." },
           ]}
           value={transactions[0].category}
           onChange={handleChange}

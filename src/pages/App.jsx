@@ -5,15 +5,15 @@ import SideBar from "../components/sideBar";
 import Title from "../components/title";
 import { BsBank2 } from "react-icons/bs";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
-import { ImSpoonKnife } from "react-icons/im";
-import { FaBus } from "react-icons/fa";
-import { IoGameController } from "react-icons/io5";
-import { GiFamilyHouse } from "react-icons/gi";
+import { IoAddCircleOutline } from "react-icons/io5";
 import { useTransaction } from "../contexts/TransactionLedgerContext";
 import TransactionHistory from "../components/transactionHistoryTable";
+import { MdLabel } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const { savedTransactions } = useTransaction();
+  const navigate = useNavigate("");
 
   const income = 3000;
   const expenses = 1500;
@@ -63,36 +63,33 @@ function App() {
               Categorias mais utilizadas
             </h4>
             <div className="mt-5 flex flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <Category
-                  icon={<ImSpoonKnife size={20} className="text-[#E26416]" />}
-                  type={"Alimentação"}
-                  amount={300}
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <Category
-                  icon={<FaBus size={20} className="text-[#1667E2]" />}
-                  type={"Transporte"}
-                  amount={300}
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <Category
-                  icon={
-                    <IoGameController size={20} className="text-[#A816E2]" />
-                  }
-                  type={"Lazer"}
-                  amount={300}
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <Category
-                  icon={<GiFamilyHouse size={20} className="text-[#E2169E]" />}
-                  type={"Moradia"}
-                  amount={300}
-                />
-              </div>
+              {savedTransactions.length > 0 ? (
+                savedTransactions.map((transaction, index) => (
+                  <div
+                    className="flex items-center justify-between"
+                    key={index}
+                  >
+                    <Category
+                      icon={<MdLabel size={20} className="text-[#8fdfff]" />}
+                      type={transaction.category}
+                      amount={transaction.value}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="flex items-center justify-between">
+                  <p className="text-[#ffffffc0]">
+                    Nenhuma categoria foi adicionada.
+                  </p>
+                  <button
+                    className="flex items-center gap-2 p-2 px-3 font-[500] bg-[#24425e] rounded-[8px] hover:opacity-90 transition-all duration-200 cursor-pointer"
+                    onClick={() => navigate("/transacoes")}
+                  >
+                    <IoAddCircleOutline size={20} />
+                    Adicionar
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
