@@ -1,12 +1,16 @@
+import { FaTrashAlt } from "react-icons/fa";
+
 const TransactionHistory = ({
   savedTransactions,
   hasBackground,
   hasPadding,
   hasBorder,
+  onDelete,
+  hasButtonDelete,
 }) => {
   return (
     <div className="w-full mt-5">
-      <table className="w-full h-full text-left">
+      <table className="w-[97%] h-full text-left">
         <tr className={`rounded-[8px] ${hasBackground && "bg-[#21364A]"}`}>
           <th
             className={`p-3 border-b border-[#626262ad] text-[#ffffffe7] font-[600] uppercase ${
@@ -59,7 +63,7 @@ const TransactionHistory = ({
           </th>
         </tr>
         {savedTransactions.map((transaction, index) => (
-          <tr key={index}>
+          <tr key={index} className="relative">
             <td
               className={`p-2.5 text-[rgba(256,_256,_256,_0.9)] ${
                 hasPadding && "pl-8"
@@ -103,6 +107,14 @@ const TransactionHistory = ({
                 currency: "BRL",
               })}
             </td>
+            {hasButtonDelete && (
+              <button
+                onClick={() => onDelete(index)}
+                className="bg-red-500 p-2.5 cursor-pointer rounded-[5px] absolute top-[5px] right-[-50px] hover:bg-red-600 transition-all duration-200"
+              >
+                <FaTrashAlt />
+              </button>
+            )}
           </tr>
         ))}
       </table>

@@ -1,7 +1,16 @@
 import { create } from "zustand";
 
+const getTransactionsFromStorage = () => {
+  const savedTransactions = localStorage.getItem("savedTransactions");
+  return savedTransactions ? JSON.parse(savedTransactions) : [];
+};
+
+const saveTransactionsToStorage = (transactions) => {
+  localStorage.setItem("savedTransactions", JSON.stringify(transactions));
+};
+
 export const useTransaction = create((set) => ({
-  savedTransactions: [],
+  savedTransactions: getTransactionsFromStorage(),
   transactions: [
     {
       value: "",
@@ -11,6 +20,7 @@ export const useTransaction = create((set) => ({
       description: "",
     },
   ],
+
   handleChange: (event) => {
     const { name, value } = event.target;
     set((state) => ({
@@ -25,24 +35,42 @@ export const useTransaction = create((set) => ({
       }),
     }));
   },
+
   handleSaveTransaction: () => {
-    set((state) => ({
-      savedTransactions: [
+    set((state) => {
+      const newSavedTransactions = [
         ...state.savedTransactions,
         {
           ...state.transactions[0],
           value: Number(state.transactions[0].value),
         },
-      ],
-      transactions: [
-        {
-          value: "",
-          typeOfTransaction: "",
-          date: "",
-          category: "",
-          description: "",
-        },
-      ],
-    }));
+      ];
+      saveTransactionsToStorage(newSavedTransactions);
+      return {
+        savedTransactions: newSavedTransactions,
+        transactions: [
+          {
+            value: "",
+            typeOfTransaction: "",
+            date: "",
+            category: "",
+            description: "",
+          },
+        ],
+      };
+    });
+  },
+
+  handleDelete: (index) => {
+    set((state) => {
+      const newSavedTransactions = state.savedTransactions.filter(
+        (_, i) => i !== index
+      );
+      saveTransactionsToStorage(newSavedTransactions);
+      return {
+        ...state,
+        savedTransactions: newSavedTransactions,
+      };
+    });
   },
 }));
