@@ -15,6 +15,7 @@ function App() {
   const { savedTransactions } = useTransaction();
   const navigate = useNavigate("");
 
+  //
   const filterTransactionOutput = savedTransactions.filter(
     (transaction) => transaction.typeOfTransaction === "Saída"
   );
@@ -24,6 +25,7 @@ function App() {
     0
   );
 
+  //
   const filterTransactionEntry = savedTransactions.filter(
     (transaction) => transaction.typeOfTransaction === "Entrada"
   );
@@ -35,6 +37,23 @@ function App() {
 
   const currentBalance = sumsEntryValues - sumOutputValues;
 
+  //
+  const totalPerCategory = (transactions) => {
+    const categoryTotals = transactions.reduce((acc, transaction) => {
+      const { category, value } = transaction;
+      acc[category] = (acc[category] || 0) + value;
+      return acc;
+    }, {});
+
+    return Object.entries(categoryTotals).map(([category, total]) => ({
+      category,
+      total,
+    }));
+  };
+
+  const categoryTotals = totalPerCategory(savedTransactions);
+
+  //
   const income = sumsEntryValues.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -95,16 +114,19 @@ function App() {
               Categorias mais utilizadas
             </h4>
             <div className="mt-5 flex flex-col gap-3">
-              {savedTransactions.length > 0 ? (
-                savedTransactions.map((transaction, index) => (
+              {categoryTotals.length > 0 ? (
+                categoryTotals.map((transaction, index) => (
                   <div
                     className="flex items-center justify-between"
                     key={index}
                   >
                     <Category
                       icon={<MdLabel size={20} className="text-[#8fdfff]" />}
-                      type={transaction.category}
-                      amount={transaction.value}
+                      category={transaction.category}
+                      total={transaction.total.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
                     />
                   </div>
                 ))

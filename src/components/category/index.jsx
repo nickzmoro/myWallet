@@ -1,18 +1,15 @@
-const Category = ({ icon, type, amount }) => {
-  const amountFormated = amount.toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
-
+const Category = ({ icon, category, total }) => {
   return (
     <>
-      <div className="flex items-center gap-2">
-        {icon}
-        <p className="text-[#D8D8D8]">{type}</p>
-      </div>
-      <div>
-        <span className="text-[#8FADCC] font-[600]">{amountFormated}</span>
-      </div>
+      <>
+        <div className="flex items-center gap-2">
+          {icon}
+          <p className="text-[#D8D8D8]">{category}</p>
+        </div>
+        <div>
+          <span className="text-[#8FADCC] font-[600]">{total}</span>
+        </div>
+      </>
     </>
   );
 };
