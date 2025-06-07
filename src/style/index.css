@@ -12,3 +12,20 @@ body {
   font-family: "Public Sans", monospace;
   outline: none;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f1a24;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8fadcc;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8fdfff;
+}

@@ -1,4 +1,11 @@
-const BalanceOverview = ({ title, info, icon, balanceColor, infoColor }) => {
+const BalanceOverview = ({
+  title,
+  info,
+  icon,
+  balanceColor,
+  infoColor,
+  amount,
+}) => {
   return (
     <div className="w-full border border-[#304D69] rounded-[8px] p-4 flex flex-col">
       <div className="flex items-center justify-between">
@@ -7,7 +14,7 @@ const BalanceOverview = ({ title, info, icon, balanceColor, infoColor }) => {
       </div>
       <div className="my-1">
         <span className={`text-[1.8rem] font-[700] ${balanceColor}`}>
-          R$1.200
+          {amount}
         </span>
       </div>
       <div>

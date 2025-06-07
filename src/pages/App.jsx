@@ -15,8 +15,34 @@ function App() {
   const { savedTransactions } = useTransaction();
   const navigate = useNavigate("");
 
-  const income = 3000;
-  const expenses = 1500;
+  const filterTransactionOutput = savedTransactions.filter(
+    (transaction) => transaction.typeOfTransaction === "Saída"
+  );
+
+  const sumOutputValues = filterTransactionOutput.reduce(
+    (accumulator, transaction) => accumulator + transaction.value,
+    0
+  );
+
+  const filterTransactionEntry = savedTransactions.filter(
+    (transaction) => transaction.typeOfTransaction === "Entrada"
+  );
+
+  const sumsEntryValues = filterTransactionEntry.reduce(
+    (accumulator, transaction) => accumulator + transaction.value,
+    0
+  );
+
+  const currentBalance = sumsEntryValues - sumOutputValues;
+
+  const income = sumsEntryValues.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const expenses = sumOutputValues.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   return (
     <div className="flex gap-3">
@@ -32,20 +58,26 @@ function App() {
             info={"Atualizado hoje"}
             infoColor={"text-[#7c92aa]"}
             icon={<BsBank2 className="text-[#8FADCC]" />}
+            amount={currentBalance.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
           />
           <BalanceOverview
             title={"Entradas do Mês"}
-            info={"+10% vs. Mês anterior"}
+            info={"Atualizado hoje"}
             infoColor={"text-[#9FFFC5]"}
             icon={<FaArrowUp className="text-[#3BFF88]" />}
             balanceColor={"text-[#3BFF88]"}
+            amount={income}
           />
           <BalanceOverview
             title={"Saídas do Mês"}
-            info={"+5% vs. Mês anterior"}
+            info={"Atualizado hoje"}
             infoColor={"text-[#FA8C6F]"}
             icon={<FaArrowDown className="text-[#DA5733]" />}
             balanceColor={"text-[#DA5733]"}
+            amount={expenses}
           />
         </div>
         <div className="flex justify-between gap-8">
@@ -56,7 +88,7 @@ function App() {
             <p className="text-[0.9rem] mb-5 text-[#979797]">
               Comparativo mensal
             </p>
-            <BalanceChart income={income} expenses={expenses} />
+            <BalanceChart income={sumsEntryValues} expenses={sumOutputValues} />
           </div>
           <div className="w-full mt-10 border border-[#304D69] rounded-[8px] p-5">
             <h4 className="text-[1.1rem] text-[#8FADCC] font-[500]">
