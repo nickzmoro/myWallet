@@ -60,19 +60,6 @@ const SideBar = () => {
               <p className="group-hover:block hidden">Metas</p>
             </button>
           </div>
-          <div>
-            <button
-              className={`flex gap-3 items-center cursor-pointer w-full px-2 h-10 rounded-[8px] transition-all duration-200 ${
-                currentPath === "/relatorios"
-                  ? "bg-[#223649] font-[500]"
-                  : "hover:bg-[#2236497e]"
-              }`}
-              onClick={() => navigate("/relatorios")}
-            >
-              <BiSolidBarChartAlt2 className="h-9 text-[#CDCDCD]" size={28} />
-              <p className="group-hover:block hidden">Relatórios</p>
-            </button>
-          </div>
         </div>
         <div className="flex gap-2 items-center">
           <TbLogout className="h-9 text-[#fdb29d] cursor-pointer" size={28} />
