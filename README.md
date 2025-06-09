@@ -1,4 +1,4 @@
-# My Wallet 💸
+# My Wallet 💼💰
 
 [🔗 Deploy do Projeto](https://my-wallet-sand.vercel.app/)  
 [📁 Repositório no GitHub](https://github.com/nickzmoro/myWallet)
